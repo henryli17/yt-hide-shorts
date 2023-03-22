@@ -1,3 +1,5 @@
+let hide = true;
+
 window.addEventListener('load', () => {   
 	hook();
 	hotkeys();
@@ -15,10 +17,12 @@ const hook = () => {
 		return;
 	}
 
-	$(selector)
-		.parents("ytd-grid-video-renderer")
-		.hide()
-	;
+	if (hide) {
+		$(selector)
+			.parents("ytd-grid-video-renderer")
+			.hide()
+		;
+	}
 };
 
 const hotkeys = () => {
@@ -29,6 +33,7 @@ const hotkeys = () => {
 				.parents("ytd-grid-video-renderer")
 				.toggle()
 			;
+			hide = !hide;
 		}
 	});
 
